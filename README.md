@@ -1,12 +1,20 @@
 # El Sabio General: Vuelve
 
-## 01-simple
+## Introducción
+El Sabio General: Vuelve es un proyecto para aprender React de menos a más, cada iteración agrega complejidad nueva
+pero también nuevas herramientas dentro de React y otros.
 
-Un app simple que muestra al General Perón, una frase de él y un botón para pedir otra.
-Los conceptos que se explican en este branch son:
+## Estructura
+Cada iteración tiene su propio branch dentro de este repositorio, es recomendable tenerlos separados en diferentes
+carpetas.
 
-- Punto de entrada de React en un archivo html
-- Componentes tontos e inteligentes.
-- Importación y exportación de componentes.
-- Incluir una librería de componentes ya hechos (material-ui).
-- Incluir una función específica de una librería de terceros para no escribir funcionalidad pre existente.
+
+## Listado
+
+### 01-simple
+```
+$ git checkout 01-simple
+$ git status # chequeamos que estemos en el branch 01-simple
+$ npm i
+$ npm start
+```
