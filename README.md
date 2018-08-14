@@ -8,7 +8,6 @@ pero también nuevas herramientas dentro de React y otros.
 Cada iteración tiene su propio branch dentro de este repositorio, es recomendable tenerlos separados en diferentes
 carpetas.
 
-
 ## Listado
 
 ### 01-simple
@@ -17,4 +16,5 @@ $ git checkout 01-simple
 $ git status # chequeamos que estemos en el branch 01-simple
 $ npm i
 $ npm start
+$ less README.md # revisar el README específico de este branch, que indica que archivo revisar primero
 ```
