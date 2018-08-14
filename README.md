@@ -10,3 +10,5 @@ Los conceptos que se explican en este branch son:
 - Importación y exportación de componentes.
 - Incluir una librería de componentes ya hechos (material-ui).
 - Incluir una función específica de una librería de terceros para no escribir funcionalidad pre existente.
+
+El primer archivo para analizar es `src/index.js`
