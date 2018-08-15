@@ -12,6 +12,9 @@ import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import Typography from '@material-ui/core/Typography';
 
+import { connect } from 'react-redux';
+import { getPhrase } from '../../actions';
+
 // Al ser un componente tonto, es una función simple sin estado que recibe como parametros la variable "props"
 function PhraseDisplay(props) {
   return (
@@ -29,7 +32,7 @@ function PhraseDisplay(props) {
 				</Typography>
 			</CardContent>
 			<CardActions>
-				<Button onClick={props.handleUpdateClick} variant="contained" color="primary" style={{width: "100%"}}>
+				<Button onClick={props.onClick} variant="contained" color="primary" style={{width: "100%"}}>
 					<Icon>autorenew</Icon>
 				</Button>
 			</CardActions>
@@ -52,6 +55,29 @@ function PhraseDisplay(props) {
 // onClickRandomPhrase del comopnente Main, que a su vez busca una frase aleatoria y ejecuta this.setState.
 // Al ejecutarse this.setState, como vimos, automáticamente se ejecuta nuevamente el render de Main, que llama a PhraseDisplay
 // que a su vez ejecuta su propio render con el nuevo valor para phrase.
+//
+//
+
+function mapStateToProps(state) {
+  const stateToMap = {
+    phrase: state.phrase
+  };
+
+  return stateToMap;
+}
+
+function mapDispatchToProps(dispatch) {
+  const onClick = () => dispatch(getPhrase());
+
+  return {
+    onClick
+  };
+}
 
 // Exportamos el componente para poder llamarlo en Main.js
-export default PhraseDisplay;
+// export default PhraseDisplay;
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PhraseDisplay);

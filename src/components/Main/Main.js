@@ -31,7 +31,6 @@ class Main extends Component {
   constructor() {
     super();
     this.state = {};
-		this.state.phrase = '';
     this.state.allPhrases = [];
 
     // Esta es una "magia" de Javascript, como la función onClickRandomPhrase se la voy a pasar al componente "tonto"
@@ -42,7 +41,6 @@ class Main extends Component {
     // aleatoria de las que están en esta clase (en este componente) necesita saber cuál es su contexto, en caso
     // de no hacerlo intentaría buscar las frases en el componente PhraseDisplay que, nuevamente, al ser tonto no hace
     // no tiene estado.
-		this.onClickRandomPhrase = this.onClickRandomPhrase.bind(this);
   }
 
   // Esta es una función que se hereda de la clase Component y es la primera que se ejecuta después
@@ -55,31 +53,19 @@ class Main extends Component {
     // Leo el archivo phrases.json, no es necesario agregarle la extensión json en el require.
     const allPhrases = require('../../data/phrases');
 
-		const phrase = this.getRandomPhrase(allPhrases);
-
     // Esto es fundamental de React, agrega a:
     // - this.state.phrase el valor de phrase
     // - this.state.allPhrases el valor de allPhrases
     //
     // Automáticamente ejecutado this.setState se ejecuta (y sin necesidad de hacerlo manualmente) la función
     // render() con estos nuevos valores
-		this.setState({phrase: phrase, allPhrases: allPhrases});
+		this.setState({allPhrases: allPhrases});
   }
 
   // Esta función implementa la función sample que agregamos más arriba, parte de lodash, simplemente
   // retorna un valor random del array phrases
 	getRandomPhrase(phrases) {
     return sample(phrases);
-	}
-
-  // Esta función se le va a pasar a PhraseDisplay para saber qué hacer cuando se clickea el botón de pedir otra frase
-	onClickRandomPhrase() {
-    // Ejecuta la función getRandomPhrase explicada anteriorment
-		const phrase = this.getRandomPhrase(this.state.allPhrases);
-
-    // Nuevamente seteamos el estado del componente Main, específicamente el string phrase y automáticamnete se llamará
-    // a la función render
-		this.setState({phrase: phrase});
 	}
 
   // Esta función es obligatoria, es la que se ejecuta siempre posteriormente a this.setState
@@ -90,7 +76,7 @@ class Main extends Component {
   // Estas props (propiedades) phrase y handleUpdateClick tienen nombres arbitrarios
   render() {
     return (
-      <PhraseDisplay phrase={this.state.phrase} handleUpdateClick={this.onClickRandomPhrase} />
+      <PhraseDisplay />
     );
   }
 }
